@@ -1,0 +1,13 @@
+---
+os: osx
+# language: python is not supported on OSX
+# see https://github.com/travis-ci/travis-ci/issues/2312
+language: generic
+
+before_install:
+  - brew update
+  - brew install python3
+  - virtualenv env -p python3
+  - source env/bin/activate
+
+script: tox --recreate -e py27-dev
